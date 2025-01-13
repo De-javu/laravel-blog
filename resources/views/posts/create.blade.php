@@ -1,0 +1,1 @@
+@echo Estas en la pagina de creacion de posts

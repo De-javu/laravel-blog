@@ -1,0 +1,1 @@
+<h1>Estas en la pagina de posts del index<h1>
