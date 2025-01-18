@@ -23,6 +23,6 @@ class PostSedders extends Seeder
 
          $post = new Post();
          
-       Post::factory(100)->create();
+       Post::factory(15000)->create();
     }
 }
