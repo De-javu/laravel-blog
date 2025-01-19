@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Attribute as GlobalAttribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -10,7 +9,10 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class Post extends Model
 {
     use HasFactory;
-    protected $table = 'post';
+
+    protected $table = 'post'; // Asegúrate de que el nombre de la tabla sea correcto
+    protected $fillable = ['title', 'content']; // Asegúrate de que los campos sean fillable
+
 
     protected function casts(): array
     {
