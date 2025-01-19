@@ -29,17 +29,20 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        // Validar los datos del formulario
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-        ]);
+       $validateData = $request->validate([
+           'title' => 'required|string|max:255',
+           'category' => 'required|string|max:255',
+           'content' => 'required|string',
+       ]);
 
-        // Crear un nuevo post en la base de datos
-        Post::create($validatedData);
+         $post = new Post();
+            $post->title = $validateData['title'];
+            $post->category = $validateData['category'];
+            $post->content = $validateData['content'];
 
-        // Redirigir al usuario a la lista de posts
-        return redirect()->route('posts.index')->with('success', 'Post creado exitosamente.');
+            $post->save();
+            return redirect()->route('posts.index');
+    
     }
 
     /**
