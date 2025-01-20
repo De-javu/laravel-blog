@@ -7,3 +7,5 @@
 <p>CONTENIDO: {{$post->content}} </p>
 
 </div>
+
+<a href="{{route('posts.edit',$post->id)}}">editar</a>

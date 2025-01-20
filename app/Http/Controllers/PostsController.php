@@ -12,7 +12,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'desc')->get();
         return view('posts.index', compact('posts'));
     }
 
@@ -44,12 +44,16 @@ class PostsController extends Controller
             return redirect()->route('posts.index');
     
     }
-
     /**
      * Display the specified resource.
      */
     public function show(Post $post)
     {
         return view('posts.show', compact('post'));
+    }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit',compact('post'));
     }
 }
