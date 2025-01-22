@@ -23,7 +23,6 @@ class PostsController extends Controller
     {
         return view('posts.create');
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -42,11 +41,8 @@ class PostsController extends Controller
 
             $post->save();
             return redirect()->route('posts.index');
-    
     }
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(Post $post)
     {
         return view('posts.show', compact('post'));
@@ -54,6 +50,22 @@ class PostsController extends Controller
 
     public function edit(Post $post)
     {
+        $post = Post::find($post->id);
         return view('posts.edit',compact('post'));
+    }
+
+    public function update(Request $request, Post $post)
+    {
+   
+       $ValidaDate = $request->validate([
+              'title' => 'required|string|max:255',
+              'category' => 'required|string|max:255',
+              'content' => 'required|string|max:255',
+       ]);
+
+       $post->update($ValidaDate);
+
+       return redirect()->route('posts.index')->with('success', 'Post updated successfully');
+
     }
 }

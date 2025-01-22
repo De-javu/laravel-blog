@@ -5,25 +5,34 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1>QUE DESEAS EDITAR?</h1>
-                    <form method="POST" action="{{ route('posts.store') }}">
+                    <form method="POST" action="{{ route('posts.update', [$post->id]) }}">
                         @csrf
-                        <div>
+                        @method('PUT')
+                        <div class="text-red-500">
+                        <div >
                             <label for="title">Título</label>
-                            <input type="text" id="title" name="title" required>
+                            <input type="text" id="title" name="title" value="{{old('name', $post->title)}}"
+                            required autofocus autocomplete="title">
+                         
                         </div>
                         <br>
                         <div>
                             <label>
                                 Categoria:
-                                <input type="text" name="category">
+                                <input type="text" name="category" value="{{old('name',$post->category)}}"
+                                required autofocus autocomplete="category">
                             </label>
                         </div>
                         <br>
                         <div>
                             <label for="content">Contenido</label>
-                            <textarea id="content" name="content" required></textarea>
+                             <textarea id="content" name="content" required autofocus autocomplete="content">
+                              {{old('name', $post->content)}}"
+                             </textarea>
                         </div>
-                        <button type="submit">Guardar</button>
+
+                        </div>
+                        <button type="submit">Actualiza la informacion</button>
                     </form>
                 </div>
             </div>

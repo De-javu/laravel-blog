@@ -11,7 +11,7 @@ class Post extends Model
     use HasFactory;
 
     protected $table = 'post'; // Asegúrate de que el nombre de la tabla sea correcto
-    protected $fillable = ['title', 'content']; // Asegúrate de que los campos sean fillable
+    protected $fillable = ['title', 'category', 'content']; // Asegúrate de que los campos sean fillable
 
 
     protected function casts(): array
