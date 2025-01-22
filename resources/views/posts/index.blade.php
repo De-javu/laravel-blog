@@ -16,4 +16,6 @@
             @endforeach
         </ul>
     @endif
+
+    {{ $posts->links() }}
 </x-app-layout>
