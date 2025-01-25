@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('post', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-
-            $table->text('content');
-            $table->string('category');
-            $table->timestamp('published_at')->nullable();
-            $table->timestamps();
+        Schema::table('post', function (Blueprint $table) {
+            $table -> string('slug')->nullable()->after('title');
         });
     }
 
@@ -27,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('post');
+        Schema::table('post', function (Blueprint $table) {
+            $table -> dropColumn('slug');
+        });
     }
 };

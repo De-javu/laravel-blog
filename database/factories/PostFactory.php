@@ -19,9 +19,10 @@ class PostFactory extends Factory
     {
         return [
            'title' => $this->faker->sentence(),
-              'content' => $this->faker->text(1000),
-              'category' => $this->faker->word(),
-              'published_at' => $this->faker->dateTime(),
+            'slug' => $this->faker->slug(),
+            'content' => $this->faker->text(1000),
+            'category' => $this->faker->word(),
+            'published_at' => $this->faker->dateTime(),
         ];
     }
 }

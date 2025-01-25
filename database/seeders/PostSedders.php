@@ -16,6 +16,7 @@ class PostSedders extends Seeder
          $post = new Post();
 
          $post->title = 'Post 1';
+
          $post->content = 'Content 1';
          $post->category = 'Category 1';
          $post->published_at = now();

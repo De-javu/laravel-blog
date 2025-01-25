@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
        $this->call([
            UserSedders::class,
               PostSedders::class,
+                UpdatePostSlugsSeeder::class,
 
          ]);
 

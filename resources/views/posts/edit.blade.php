@@ -5,7 +5,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1>QUE DESEAS EDITAR?</h1>
-                    <form method="POST" action="{{ route('posts.update', [$post->id]) }}">
+                    <form method="POST" action="{{ route('posts.update', [$post->slug]) }}">
                         @csrf
                         @method('PUT')
                         <div class="text-red-500">
@@ -14,6 +14,15 @@
                             <input type="text" id="title" name="title" value="{{old('name', $post->title)}}"
                             required autofocus autocomplete="title">
                          
+                        </div>
+                        <br>
+
+                        <div>
+                            <label>
+                                Slug:
+                                <input type="text" name="slug" value="{{old('name',$post->slug)}}"
+                                required autofocus autocomplete="slug">
+                            </label>
                         </div>
                         <br>
                         <div>

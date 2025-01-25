@@ -24,12 +24,14 @@ class PostsController extends Controller
     {
        $validateData = $request->validate([
            'title' => 'required|string|max:255',
+           'slug' => 'required|string|max:255',
            'category' => 'required|string|max:255',
            'content' => 'required|string',
        ]);
 
          $post = new Post();
             $post->title = $validateData['title'];
+            $post->slug = $validateData['slug'];
             $post->category = $validateData['category'];
             $post->content = $validateData['content'];
 
@@ -56,6 +58,7 @@ class PostsController extends Controller
    
        $ValidaDate = $request->validate([
               'title' => 'required|string|max:255',
+              'slug' => 'required|string|max:255',
               'category' => 'required|string|max:255',
               'content' => 'required|string|max:255',
        ]);

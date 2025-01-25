@@ -9,7 +9,7 @@
         <ul class="text-red-500">
             @foreach($posts as $post)
                 <li>
-                    <a href="/posts/{{$post->id}}">
+                    <a href="{{route('posts.show', $post->slug)}}">
                     {{ $post->title}}
                     </a>
                 </li>
