@@ -8,10 +8,23 @@
                     <form method="POST" action="{{ route('posts.update', [$post->slug]) }}">
                         @csrf
                         @method('PUT')
+
+                         <!-- validador de errores que llegan por formulario -->
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            
+                        @endif
+
                         <div class="text-red-500">
                         <div >
                             <label for="title">Título</label>
-                            <input type="text" id="title" name="title" value="{{old('name', $post->title)}}"
+                            <input type="text" id="title" name="title" value="{{old('title', $post->title)}}"
                             required autofocus autocomplete="title">
                          
                         </div>

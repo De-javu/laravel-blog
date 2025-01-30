@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
@@ -22,12 +23,12 @@ class PostsController extends Controller
     // Se crea el metodo store que se encarga de recibir los datos del fomulario y guardarlos en la base de datos.
     public function store(Request $request)
     {
-       $validateData = $request->validate([
-           'title' => 'required|string|max:255',
-           'slug' => 'required|string|max:255',
-           'category' => 'required|string|max:255',
-           'content' => 'required|string',
-       ]);
+    $validateData = $request->validate([
+        'title' => 'required|string|max:255',
+        'slug' => 'required|string|unique:post|max:255', //Se valida que el slug sea unico en la tabla post.
+        'category' => 'required|string|max:255',
+        'content' => 'required|string',
+    ]);
 
          $post = new Post();
             $post->title = $validateData['title'];
@@ -58,7 +59,7 @@ class PostsController extends Controller
    
        $ValidaDate = $request->validate([
               'title' => 'required|string|max:255',
-              'slug' => 'required|string|max:255',
+              'slug' => 'required|string|unique:post,slug,'.$post->id.'|max:255', //Se valida que el slug sea unico en la tabla post, exceptuando el post que se esta editando, para poder actualizarlo.
               'category' => 'required|string|max:255',
               'content' => 'required|string|max:255',
        ]);

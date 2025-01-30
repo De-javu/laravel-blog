@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('post', function (Blueprint $table) {
-            $table -> string('slug')->nullable()->after('title');
+            // Añadir una columna slug a la tabla post
+            $table -> string('slug')->nullable()->after('title'); 
         });
     }
 
@@ -22,6 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('post', function (Blueprint $table) {
+            // Eliminar la columna slug de la tabla post
             $table -> dropColumn('slug');
         });
     }
